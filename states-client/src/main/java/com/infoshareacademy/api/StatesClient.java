@@ -27,6 +27,8 @@ public class StatesClient {
     }
 
     public StateDetails getStateDetails(String stateCode) {
-        throw new UnsupportedOperationException("Not implemented yer");
+
+        return this.getAllStates().stream()
+                .filter(s -> s.getAbbr().equals(stateCode)).findFirst().orElse(null);
     }
 }
