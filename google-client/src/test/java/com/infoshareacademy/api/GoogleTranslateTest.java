@@ -1,14 +1,14 @@
 package com.infoshareacademy.api;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class GoogleTranslateTest {
 
-    public static final String API_KEY = "";
+    public static final String API_KEY = "AIzaSyATncQL0uaAt0MJtTnIOv2np1GqTanm2Bs";
 
     private GoogleTranslate googleTranslate;
 
