@@ -30,10 +30,23 @@ public class GoogleTranslate {
         Response response = webTarget.request().accept(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.form(params));;
 
-        GoogleTranslateResponse responseValue = response
-                .readEntity(GoogleTranslateResponse.class);
 
-        response.close();
-        return responseValue.getData().getTranslations().get(0).getTranslatedText();
+        int status = response.getStatus();
+
+
+
+//        if(status == 200)
+        {
+            GoogleTranslateResponse responseValue = response
+                    .readEntity(GoogleTranslateResponse.class);
+            response.close();
+            return responseValue.getData().getTranslations().get(0).getTranslatedText();
+        }
+//        else
+//        {
+//            GoogleTranslateResponse responseValue = response
+//                    .readEntity(GoogleTranslateError.class);
+//            return responseValue.getMessage();
+//        }
     }
 }
