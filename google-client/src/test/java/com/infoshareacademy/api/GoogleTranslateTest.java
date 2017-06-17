@@ -1,9 +1,9 @@
 package com.infoshareacademy.api;
 
+import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
 
 public class GoogleTranslateTest {
 

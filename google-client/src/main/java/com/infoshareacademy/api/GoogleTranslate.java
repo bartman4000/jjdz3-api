@@ -1,8 +1,8 @@
 package com.infoshareacademy.api;
 
 import com.infoshareacademy.api.model.Container;
-import com.infoshareacademy.api.model.error.Error;
 import com.infoshareacademy.api.model.error.ErrorContainer;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
