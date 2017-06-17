@@ -21,13 +21,13 @@ public class GoogleTranslate {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target("https://translation.googleapis.com/language/translate/v2");
 
-        final Form params = new Form();
+        Form params = new Form();
         params.param("q", input);
         params.param("source", source);
         params.param("target", target);
         params.param("key", API_KEY);
 
-        final Response response = webTarget.request().accept(MediaType.APPLICATION_JSON_TYPE)
+        Response response = webTarget.request().accept(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.form(params));;
 
         GoogleTranslateResponse responseValue = response
