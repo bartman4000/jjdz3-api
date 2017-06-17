@@ -1,5 +1,6 @@
 package com.infoshareacademy.api;
 
+import com.infoshareacademy.api.model.Container;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -27,8 +28,8 @@ public class GoogleTranslate {
         final Client client = ClientBuilder.newClient();
         final WebTarget webTarget = client.target(endpoint);
         final Response response = webTarget.request().post(Entity.form(params));
-        final String result = response.readEntity(String.class);
+        final Container result = response.readEntity(Container.class);
         response.close();
-        return result;
+        return result.getData().getTranslations().get(0).getTranslatedText();
     }
 }
