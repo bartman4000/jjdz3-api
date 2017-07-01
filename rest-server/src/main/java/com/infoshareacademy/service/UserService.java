@@ -1,16 +1,23 @@
 package com.infoshareacademy.service;
 
+import com.infoshareacademy.model.User;
+import com.infoshareacademy.model.UserStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.List;
 
 @Path("/")
 public class UserService {
+
+    @Inject
+    UserStore userStore;
 
     @Context
     private UriInfo uriInfo;
@@ -35,10 +42,24 @@ public class UserService {
 
     @GET
     @Path("/header")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getHeader(@HeaderParam("user-agent") String agent) {
 
         return Response.status(Response.Status.OK).entity("Header user-agent " + agent).build();
+    }
+
+    @GET
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUsers() {
+
+        List<User> users = userStore.getUsers();
+        if(users.isEmpty())
+        {
+            return Response.noContent().build();
+        }
+
+        return Response.status(Response.Status.OK).entity(users).build();
     }
 
 }

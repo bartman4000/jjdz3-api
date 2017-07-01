@@ -3,9 +3,13 @@ package com.infoshareacademy.model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Singleton;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+@Singleton
 public class UserStore {
 
     private Logger LOG = LoggerFactory.getLogger(UserStore.class);
@@ -28,6 +32,11 @@ public class UserStore {
 
         base.put(user1.getId(), user1);
         base.put(user2.getId(), user2);
+    }
+
+    public List<User> getUsers()
+    {
+        return base.values().stream().collect(Collectors.toList());
     }
 
     public void add(User user) {
