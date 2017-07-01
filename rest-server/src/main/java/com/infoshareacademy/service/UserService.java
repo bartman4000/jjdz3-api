@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
+import java.util.Optional;
 
 @Path("/")
 public class UserService {
@@ -60,6 +61,22 @@ public class UserService {
         }
 
         return Response.status(Response.Status.OK).entity(users).build();
+    }
+
+    @GET
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUser(@QueryParam("id") Integer id) {
+
+        Optional<User> user = userStore.getUser(id);
+        if(user.isPresent())
+        {
+            return Response.status(Response.Status.OK).entity(user.get()).build();
+        }
+        else
+        {
+            return Response.noContent().build();
+        }
     }
 
 }

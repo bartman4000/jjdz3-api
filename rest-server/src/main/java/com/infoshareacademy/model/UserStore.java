@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Singleton;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Singleton
@@ -37,6 +35,13 @@ public class UserStore {
     public List<User> getUsers()
     {
         return base.values().stream().collect(Collectors.toList());
+    }
+
+    public Optional<User> getUser(Integer id)
+    {
+        return base.values().stream()
+                .filter(u -> u.getId() == id)
+                .findFirst();
     }
 
     public void add(User user) {
