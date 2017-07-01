@@ -38,7 +38,7 @@ public class UserService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response getHeader(@HeaderParam("user-agent") String agent) {
 
-        return Response.ok().entity("Header user-agent " + agent).build();
+        return Response.status(Response.Status.OK).entity("Header user-agent " + agent).build();
     }
 
 }
